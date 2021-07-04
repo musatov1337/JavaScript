@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chess board. Canvas API, JS/ES5</title>
+</head>
+
+<body>
+    <canvas id="renderCanvas" width="250" height="250" style="border: solid grey 2px"></canvas>
+
+    <script>
+        var canvas = document.getElementById("renderCanvas");
+        var ctx = canvas.getContext("2d");
+        var offset = 25;
+
+        ctx.font = "20px Arial";
+        ctx.fillText("8", offset / 2 - 5, offset * 2 - 9);
+        ctx.fillText("7", offset / 2 - 5, offset * 3 - 9);
+        ctx.fillText("6", offset / 2 - 5, offset * 4 - 9);
+        ctx.fillText("5", offset / 2 - 5, offset * 5 - 9);
+        ctx.fillText("4", offset / 2 - 5, offset * 6 - 9);
+        ctx.fillText("3", offset / 2 - 5, offset * 7 - 9);
+        ctx.fillText("2", offset / 2 - 5, offset * 8 - 9);
+        ctx.fillText("1", offset / 2 - 5, offset * 9 - 9);
+        ctx.fillText("a", offset * 1 + 9, offset / 2 + 9);
+        ctx.fillText("b", offset * 2 + 9, offset / 2 + 9);
+        ctx.fillText("c", offset * 3 + 9, offset / 2 + 9);
+        ctx.fillText("d", offset * 4 + 9, offset / 2 + 9);
+        ctx.fillText("e", offset * 5 + 9, offset / 2 + 9);
+        ctx.fillText("f", offset * 6 + 9, offset / 2 + 9);
+        ctx.fillText("g", offset * 7 + 9, offset / 2 + 9);
+        ctx.fillText("h", offset * 8 + 9, offset / 2 + 9);
+
+        drawCell(offset, offset, "black");
+        drawCell(offset * 2, offset, "rgb(220, 220, 220)");
+        drawCell(offset * 3, offset, "black");
+        drawCell(offset * 2, offset * 2, "black");
+        drawLine(offset * 9, offset, offset * 9, offset * 9);
+        drawLine(offset, offset, offset, offset * 9);
+        drawLine(offset, offset, offset * 9, offset);
+        drawLine(offset, offset * 9, offset * 9, offset * 9);
+        function drawCell(x, y, color) {
+            ctx.beginPath();
+            ctx.rect(x, y, 25, 25);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        function drawLine(x0, y0, x1, y1) {
+            ctx.beginPath();
+            ctx.strokeStyle = "green";
+            ctx.moveTo(x0, y0);
+            ctx.lineTo(x1, y1);
+            ctx.stroke();
+        }
+    </script>
+</body>
+
+</html>
